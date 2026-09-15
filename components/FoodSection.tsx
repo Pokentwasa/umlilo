@@ -12,7 +12,12 @@ function DishPanel({ dish, index }: { dish: Dish; index: number }) {
       className="dish-panel relative h-[62vh] w-[82vw] shrink-0 snap-center overflow-hidden rounded-sm lg:h-[68vh] lg:w-[46vw] xl:w-[38vw]"
       data-cursor="VIEW"
     >
-      <ImagePlaceholder brief={dish.placeholder} tag={String(index + 1).padStart(2, "0")} className="absolute inset-0 h-full w-full" />
+      <ImagePlaceholder
+        brief={dish.placeholder}
+        tag={String(index + 1).padStart(2, "0")}
+        className="absolute inset-0 h-full w-full"
+        src={dish.image}
+      />
       <div
         className="absolute inset-0"
         style={{

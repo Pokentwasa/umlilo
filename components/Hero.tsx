@@ -4,6 +4,7 @@ import { useRef } from "react";
 import { useGSAP } from "@gsap/react";
 import { gsap, MQ } from "@/lib/gsap";
 import ImagePlaceholder from "./ImagePlaceholder";
+import { site } from "@/data/site";
 
 const SPARKS = Array.from({ length: 16 }, (_, i) => ({
   id: i,
@@ -71,9 +72,11 @@ export default function Hero() {
       aria-label="Um-Lilo — introduction"
     >
       <ImagePlaceholder
-        brief="Cinematic sequence: charcoal igniting, smoke, meat hitting the grill, hands turning meat"
+        brief="Fire in the brazier at night, sparks rising into the dark"
         tag="HERO"
         className="absolute inset-0 h-full w-full"
+        src={site.media.hero}
+        priority
         decorative
       />
       <div

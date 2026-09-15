@@ -131,6 +131,25 @@ body {
     font-weight: 600;
   }
 
+  /* Corner tag shown over a real photo (no caption needed once the
+     placeholder brief is no longer standing in for a missing shot). */
+  .ph-frame__tag {
+    position: absolute;
+    left: 0.85rem;
+    top: 0.85rem;
+    z-index: 2;
+    border-radius: 0.125rem;
+    background: rgba(21, 17, 13, 0.6);
+    padding: 0.15rem 0.5rem;
+    font-family: var(--font-sans);
+    font-size: 0.6rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--color-ember);
+    backdrop-filter: blur(2px);
+  }
+
   /* EMBER THREAD — the glowing line that runs the length of the
      page, drawn on with scroll. */
   .ember-glow {

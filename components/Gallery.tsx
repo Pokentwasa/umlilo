@@ -103,6 +103,7 @@ export default function Gallery() {
                 brief={img.placeholder}
                 tag={img.category.toUpperCase()}
                 className="h-full w-full transition-transform duration-500 group-hover:scale-[1.03]"
+                src={img.image}
               />
             </button>
             <figcaption className="mt-2 text-xs uppercase tracking-[0.15em] text-bone/50">
@@ -130,7 +131,7 @@ export default function Gallery() {
           </button>
           <div className="max-h-[80vh] w-full max-w-3xl" onClick={(e) => e.stopPropagation()}>
             <div className="aspect-[4/3] w-full">
-              <ImagePlaceholder brief={active.placeholder} tag={active.category.toUpperCase()} className="h-full w-full" />
+              <ImagePlaceholder brief={active.placeholder} tag={active.category.toUpperCase()} className="h-full w-full" src={active.image} />
             </div>
             <p className="mt-4 text-center font-display text-xl italic text-bone">{active.caption}</p>
           </div>

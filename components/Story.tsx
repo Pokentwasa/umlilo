@@ -4,6 +4,7 @@ import { useRef } from "react";
 import { useGSAP } from "@gsap/react";
 import { gsap, MQ } from "@/lib/gsap";
 import ImagePlaceholder from "./ImagePlaceholder";
+import { site } from "@/data/site";
 
 export default function Story() {
   const rootRef = useRef<HTMLElement>(null);
@@ -83,9 +84,10 @@ export default function Story() {
 
           <div className="story-photo relative aspect-[4/5] w-full overflow-hidden lg:aspect-auto">
             <ImagePlaceholder
-              brief="Editorial portrait: the fire-keeper at the grid, mid-shift, unposed"
+              brief="The Um-Lilo Private School Tshisa Nyama sign, lit up at night on Albert Road"
               tag="03"
               className="h-full w-full"
+              src={site.media.storyPhoto}
             />
           </div>
         </div>

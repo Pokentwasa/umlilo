@@ -113,6 +113,7 @@ export default function Imbizo() {
               brief={beat.photo.placeholder}
               tag={beat.photo.category.toUpperCase()}
               className="h-full w-full shadow-2xl shadow-black/50"
+              src={beat.photo.image}
             />
           </div>
         ))}
@@ -152,7 +153,7 @@ export default function Imbizo() {
               {imbizoPhrases[i]}
             </p>
             <div className="mt-5 aspect-[4/5] w-full max-w-sm">
-              <ImagePlaceholder brief={beat.photo.placeholder} tag={beat.photo.category.toUpperCase()} className="h-full w-full" />
+              <ImagePlaceholder brief={beat.photo.placeholder} tag={beat.photo.category.toUpperCase()} className="h-full w-full" src={beat.photo.image} />
             </div>
           </div>
         ))}

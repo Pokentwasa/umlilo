@@ -32,6 +32,10 @@ export const site = {
     label: "Order",
     href: "#visit",
   },
+  media: {
+    hero: "/images/pexels-pamanjoe-13672086.jpg",
+    storyPhoto: "/images/Screenshot%202026-09-15%20at%2022.39.59.png",
+  },
   hours: [
     { day: "Monday", open: null, close: null, note: "Closed" },
     { day: "Tuesday", open: "11:00", close: "21:00" },
