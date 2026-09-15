@@ -1,0 +1,214 @@
+@import "tailwindcss";
+
+/* ============================================================
+   UM-LILO — DESIGN TOKENS
+   Embers, smoke, charcoal, meat, old menus, football pubs,
+   Sunday lunch. Colour is used sparingly and intentionally.
+   ============================================================ */
+:root {
+  --color-charcoal: #15110d;   /* near-black, warm */
+  --color-ink: #1d1712;        /* secondary dark surface */
+  --color-bone: #efe7d8;       /* warm off-white */
+  --color-cream: #f6f0e4;      /* lighter warm cream */
+  --color-ember: #ff5a2b;      /* flame orange — accent only */
+  --color-burnt: #8a2e1f;      /* burnt red */
+  --color-burgundy: #4c1620;   /* deep burgundy */
+  --color-tobacco: #6b4a34;    /* muted tobacco brown */
+  --color-steel: #7a746a;      /* warm steel grey */
+  --color-smoke: #2a2420;      /* smoke over charcoal */
+
+  --font-display: var(--font-fraunces);
+  --font-sans: var(--font-archivo);
+  --font-condensed: var(--font-bebas);
+
+  --ease-fire: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@theme inline {
+  --color-charcoal: var(--color-charcoal);
+  --color-ink: var(--color-ink);
+  --color-bone: var(--color-bone);
+  --color-cream: var(--color-cream);
+  --color-ember: var(--color-ember);
+  --color-burnt: var(--color-burnt);
+  --color-burgundy: var(--color-burgundy);
+  --color-tobacco: var(--color-tobacco);
+  --color-steel: var(--color-steel);
+  --color-smoke: var(--color-smoke);
+
+  --font-display: var(--font-display);
+  --font-sans: var(--font-sans);
+  --font-condensed: var(--font-condensed);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  background: var(--color-charcoal);
+  scroll-behavior: auto;
+}
+
+body {
+  background: var(--color-charcoal);
+  color: var(--color-bone);
+  font-family: var(--font-sans);
+  overflow-x: clip;
+  cursor: default;
+}
+
+::selection {
+  background: var(--color-ember);
+  color: var(--color-charcoal);
+}
+
+/* Focus states — always visible, never suppressed */
+:focus-visible {
+  outline: 2px solid var(--color-ember);
+  outline-offset: 3px;
+}
+
+/* ============================================================
+   Custom component classes live in the `components` layer so
+   Tailwind utility classes (the `utilities` layer) always win when
+   applied alongside them — e.g. `<ImagePlaceholder className="absolute
+   inset-0" />` must be able to override ph-frame's own positioning.
+   ============================================================ */
+@layer components {
+  /* GRAIN — a fixed, cheap film-grain layer over the whole page. */
+  .grain {
+    position: fixed;
+    inset: 0;
+    z-index: 60;
+    pointer-events: none;
+    opacity: 0.05;
+    mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    background-size: 160px 160px;
+  }
+
+  /* PLACEHOLDER FRAME — stands in for real photography wherever it's
+     not yet available. Styled deliberately, like an annotated contact
+     sheet, so the gap reads as intentional editorial system rather
+     than a broken image. */
+  .ph-frame {
+    position: relative;
+    overflow: hidden;
+    background:
+      repeating-linear-gradient(135deg, rgba(239, 231, 216, 0.06) 0 2px, transparent 2px 14px),
+      linear-gradient(160deg, var(--color-smoke), var(--color-ink) 60%, var(--color-charcoal));
+    isolation: isolate;
+  }
+
+  .ph-frame::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    opacity: 0.18;
+    mix-blend-mode: overlay;
+  }
+
+  .ph-frame__label {
+    position: absolute;
+    left: 0.85rem;
+    bottom: 0.85rem;
+    right: 0.85rem;
+    z-index: 2;
+    font-family: var(--font-sans);
+    font-size: 0.62rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(239, 231, 216, 0.55);
+    display: flex;
+    align-items: baseline;
+    gap: 0.5rem;
+  }
+
+  .ph-frame__label span.tag {
+    color: var(--color-ember);
+    font-weight: 600;
+  }
+
+  /* EMBER THREAD — the glowing line that runs the length of the
+     page, drawn on with scroll. */
+  .ember-glow {
+    filter: drop-shadow(0 0 6px rgba(255, 90, 43, 0.85)) drop-shadow(0 0 14px rgba(255, 90, 43, 0.35));
+  }
+}
+
+/* CUSTOM CURSOR — desktop (fine pointer) only. */
+@media (hover: hover) and (pointer: fine) {
+  .has-custom-cursor {
+    cursor: none;
+  }
+}
+
+/* ============================================================
+   MOTION — respect prefers-reduced-motion globally as a backstop.
+   Component-level GSAP also branches via matchMedia.
+   ============================================================ */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+@layer components {
+  .container-edit {
+    width: 100%;
+    max-width: 90rem;
+    margin-inline: auto;
+    padding-inline: clamp(1.25rem, 4vw, 4rem);
+  }
+
+  .animate-marquee {
+    animation: marquee-x 28s linear infinite;
+  }
+
+  .animate-marquee-reverse {
+    animation: marquee-x 34s linear infinite reverse;
+  }
+
+  .text-stroke {
+    -webkit-text-stroke: 1.5px var(--color-bone);
+    color: transparent;
+  }
+
+  .eq-bar {
+    animation: eq-bar 1.1s ease-in-out infinite;
+    transform-origin: bottom;
+  }
+}
+
+@keyframes marquee-x {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes eq-bar {
+  0%, 100% { transform: scaleY(0.25); }
+  50% { transform: scaleY(1); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-marquee,
+  .animate-marquee-reverse {
+    animation: none;
+  }
+
+  .eq-bar {
+    animation: none;
+    transform: scaleY(0.6);
+  }
+}
