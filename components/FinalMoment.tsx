@@ -89,12 +89,12 @@ export default function FinalMoment() {
               Instagram
             </a>
             <a
-              href={site.social.facebook}
+              href={site.social.linktree}
               target="_blank"
               rel="noopener noreferrer"
               className="text-xs font-semibold uppercase tracking-[0.14em] text-bone/60 hover:text-ember"
             >
-              Facebook
+              All Links
             </a>
           </div>
         </div>

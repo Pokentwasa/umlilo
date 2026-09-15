@@ -1,4 +1,5 @@
 import { site } from "@/data/site";
+import ImagePlaceholder from "./ImagePlaceholder";
 
 function directionsUrl() {
   const q = encodeURIComponent(
@@ -24,6 +25,10 @@ export default function Visit() {
               {site.address.streetAddress}
               <br />
               {site.address.addressLocality}, Cape Town
+            </p>
+            <p className="mt-3 text-sm text-charcoal/60">
+              Every day at Albert Road. Weekends, also find us at{" "}
+              {site.secondaryLocation.name} — {site.secondaryLocation.note}.
             </p>
           </address>
 
@@ -65,12 +70,12 @@ export default function Visit() {
                 Instagram
               </a>
               <a
-                href={site.social.facebook}
+                href={site.social.linktree}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="mt-1 block text-charcoal/85 hover:text-burnt"
               >
-                Facebook
+                All Links
               </a>
             </div>
           </div>
@@ -84,6 +89,14 @@ export default function Visit() {
         </div>
 
         <div className="flex flex-col gap-8">
+          <div className="relative aspect-[4/3] w-full overflow-hidden rounded-sm">
+            <ImagePlaceholder
+              brief="The Um-Lilo storefront on Albert Road, regulars out front giving a thumbs up"
+              className="h-full w-full"
+              src={site.media.storefront}
+            />
+          </div>
+
           <div className="relative aspect-[4/3] w-full overflow-hidden rounded-sm bg-charcoal">
             <svg viewBox="0 0 400 300" className="h-full w-full" role="img" aria-label="Stylised map showing Um-Lilo's location in Woodstock, Cape Town">
               <rect width="400" height="300" fill="var(--color-charcoal)" />
@@ -118,7 +131,10 @@ export default function Visit() {
                 <div key={h.day} className="flex items-center justify-between py-2 text-sm">
                   <dt className="text-charcoal/70">{h.day}</dt>
                   <dd className="text-right font-medium">
-                    {h.open && h.close ? `${h.open} – ${h.close}` : h.note ?? "Closed"}
+                    {h.open && h.close ? `${h.open} – ${h.close}` : (h.note ?? "Closed")}
+                    {h.open && h.close && h.note && (
+                      <span className="block text-xs font-normal text-charcoal/50">{h.note}</span>
+                    )}
                   </dd>
                 </div>
               ))}

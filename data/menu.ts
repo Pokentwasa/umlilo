@@ -14,12 +14,12 @@ export type Dish = {
 
 export const dishes: Dish[] = [
   {
-    slug: "buntu-special",
-    name: "Buntu Special",
+    slug: "bunty-special",
+    name: "Bunty Special",
     category: "Tshisa Nyama",
     description:
-      "The house cut, straight off the coals — our fire-keeper's own recipe, seasoned the night before and never rushed.",
-    price: null,
+      "One brisket, one lamb chop, one sausage — the house sampler, straight off the coals.",
+    price: 180,
     placeholder: "Boerewors, steak and charred peppers laid across the coals, shot from above",
     image: "/images/pexels-didsss-4294500.jpg",
   },
@@ -65,8 +65,8 @@ export const dishes: Dish[] = [
     slug: "wings",
     name: "Wings",
     category: "Tshisa Nyama",
-    description: "Charred, sticky, gone before the second round of drinks arrives.",
-    price: null,
+    description: "Six pieces, charred and sticky — gone before the second round of drinks arrives.",
+    price: 180,
     placeholder: "Tray of grilled wings, hand reaching for one",
   },
   {

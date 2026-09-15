@@ -40,7 +40,7 @@ export function restaurantSchema() {
       longitude: site.geo.longitude,
     },
     openingHoursSpecification: openingHours(),
-    sameAs: [site.social.instagram, site.social.facebook, site.social.tiktok],
+    sameAs: [site.social.instagram, site.social.linktree],
     hasMenu: {
       "@type": "Menu",
       name: `${site.shortName} Menu`,

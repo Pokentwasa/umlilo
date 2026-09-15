@@ -4,6 +4,7 @@ import { useRef } from "react";
 import { useGSAP } from "@gsap/react";
 import { gsap, MQ } from "@/lib/gsap";
 import { galleryImages, imbizoPhrases } from "@/data/gallery";
+import { site } from "@/data/site";
 import ImagePlaceholder from "./ImagePlaceholder";
 
 const beats = [
@@ -93,6 +94,9 @@ export default function Imbizo() {
       <div className="container-edit pt-24 lg:absolute lg:left-0 lg:top-10 lg:z-20 lg:pt-0">
         <p className="text-xs font-semibold uppercase tracking-[0.3em] text-ember">Gathering</p>
         <h2 className="mt-3 font-display text-5xl font-medium text-bone sm:text-6xl">Imbizo</h2>
+        <p className="mt-2 text-sm italic text-bone/60">
+          {site.motto.isiXhosa} — {site.motto.translation}
+        </p>
       </div>
 
       {/* Desktop: pinned collage sequence */}

@@ -73,7 +73,9 @@ export default function Story() {
               We&rsquo;re a Woodstock tshisa nyama built on township food culture and
               Cape Town&rsquo;s appetite for gathering: fire-grilled meat, honest
               sides, a screen for the match, and a seat that&rsquo;s always easy to
-              pull up another chair to.
+              pull up another chair to. Regulars just call it{" "}
+              <span className="italic">{site.motto.isiXhosa}</span> &mdash;{" "}
+              {site.motto.translation.toLowerCase()}.
             </p>
             <p className="story-copy break-inside-avoid">
               &ldquo;Private School&rdquo; is the standard we hold the fire to, not a
