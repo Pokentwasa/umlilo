@@ -123,13 +123,13 @@ export default function FoodSection() {
   );
 
   return (
-    <section ref={rootRef} id="food" className="relative bg-ink" aria-label="Food">
+    <section ref={rootRef} id="food" className="relative bg-bone" aria-label="Food">
       <div className="container-edit pt-28 sm:pt-36 lg:pt-0">
         <div className="lg:absolute lg:left-0 lg:top-16 lg:z-10 lg:w-full lg:px-[6vw]">
-          <p className="text-xs font-semibold uppercase tracking-[0.3em] text-ember">
+          <p className="text-xs font-semibold uppercase tracking-[0.3em] text-burnt">
             Tshisa Nyama
           </p>
-          <h2 className="mt-3 max-w-2xl text-balance font-display text-4xl font-medium leading-[0.95] text-bone sm:text-5xl lg:text-6xl">
+          <h2 className="mt-3 max-w-2xl text-balance font-display text-4xl font-medium leading-[0.95] text-charcoal sm:text-5xl lg:text-6xl">
             Food that fills the whole table, not a plate.
           </h2>
         </div>

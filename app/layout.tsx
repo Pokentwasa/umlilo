@@ -85,10 +85,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema()) }}
         />
       </head>
-      <body className="min-h-full bg-charcoal font-sans text-bone antialiased">
+      <body className="min-h-full bg-bone font-sans text-charcoal antialiased">
         <a
           href="#main"
-          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded focus:bg-ember focus:px-4 focus:py-2 focus:text-charcoal"
+          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded focus:bg-ember focus:px-4 focus:py-2 focus:text-bone"
         >
           Skip to content
         </a>

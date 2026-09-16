@@ -7,7 +7,7 @@ function NavLink({ href, children }: { href: string; children: React.ReactNode }
   return (
     <a
       href={href}
-      className="group relative inline-block text-sm font-semibold uppercase tracking-[0.14em] text-bone/85 transition-colors hover:text-ember"
+      className="group relative inline-block text-sm font-semibold uppercase tracking-[0.14em] text-charcoal/80 transition-colors hover:text-ember"
     >
       {children}
       <span className="absolute -bottom-1 left-0 h-px w-full origin-left scale-x-0 bg-ember transition-transform duration-300 ease-[--ease-fire] group-hover:scale-x-100" />
@@ -20,11 +20,11 @@ export default function Nav() {
 
   return (
     <>
-    <header className="fixed inset-x-0 top-0 z-50 border-b border-bone/10 bg-charcoal">
+    <header className="fixed inset-x-0 top-0 z-50 border-b border-charcoal/10 bg-bone">
       <div className="container-edit flex items-center justify-between py-5">
         <a
           href="#top"
-          className="font-display text-lg font-semibold tracking-tight text-bone"
+          className="font-display text-lg font-semibold tracking-tight text-charcoal"
           aria-label={`${site.shortName} — home`}
         >
           UM-LILO
@@ -41,7 +41,7 @@ export default function Nav() {
         <div className="flex items-center gap-4">
           <a
             href={site.order.href}
-            className="hidden border border-ember/70 px-5 py-2 text-xs font-bold uppercase tracking-[0.14em] text-ember transition-colors hover:bg-ember hover:text-charcoal sm:inline-block"
+            className="hidden border border-ember px-5 py-2 text-xs font-bold uppercase tracking-[0.14em] text-ember transition-colors hover:bg-ember hover:text-bone sm:inline-block"
           >
             {site.order.label}
           </a>
@@ -52,21 +52,21 @@ export default function Nav() {
             aria-label="Open menu"
             aria-expanded={open}
           >
-            <span className="block h-px w-6 bg-bone" />
-            <span className="block h-px w-6 bg-bone" />
+            <span className="block h-px w-6 bg-charcoal" />
+            <span className="block h-px w-6 bg-charcoal" />
           </button>
         </div>
       </div>
     </header>
 
       {open && (
-        <div className="fixed inset-0 z-[60] flex flex-col bg-charcoal">
+        <div className="fixed inset-0 z-[60] flex flex-col bg-bone">
           <div className="container-edit flex items-center justify-between py-5">
-            <span className="font-display text-lg font-semibold text-bone">UM-LILO</span>
+            <span className="font-display text-lg font-semibold text-charcoal">UM-LILO</span>
             <button
               type="button"
               onClick={() => setOpen(false)}
-              className="p-2 text-3xl leading-none text-bone"
+              className="p-2 text-3xl leading-none text-charcoal"
               aria-label="Close menu"
             >
               &times;
@@ -81,7 +81,7 @@ export default function Nav() {
                 key={item.href}
                 href={item.href}
                 onClick={() => setOpen(false)}
-                className="font-display text-4xl font-medium text-bone"
+                className="font-display text-4xl font-medium text-charcoal"
                 style={{ animationDelay: `${i * 40}ms` }}
               >
                 {item.label}
