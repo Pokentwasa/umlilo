@@ -40,31 +40,26 @@ export default function Story() {
   );
 
   return (
-    <section
-      ref={rootRef}
-      id="story"
-      className="relative bg-cream py-24 text-charcoal sm:py-32"
-      aria-label="Our story"
-    >
-      <div className="container-edit">
-        <div className="flex items-start justify-between border-b border-charcoal/15 pb-4">
-          <p className="text-xs font-semibold uppercase tracking-[0.3em] text-burnt">
-            Our Story &mdash; No. 01
-          </p>
-          <p className="hidden font-condensed text-sm tracking-widest text-charcoal/50 sm:block">
-            WOODSTOCK, CAPE TOWN
-          </p>
-        </div>
+    <section ref={rootRef} id="story" className="relative bg-charcoal text-bone" aria-label="Our story">
+      <div className="grid lg:grid-cols-[1.3fr_1fr] lg:items-stretch">
+        <div className="py-24 pl-[clamp(1.25rem,4vw,4rem)] pr-[clamp(1.25rem,4vw,4rem)] sm:py-32 lg:pr-16">
+          <div className="flex items-start justify-between border-b border-bone/15 pb-4">
+            <p className="text-xs font-semibold uppercase tracking-[0.3em] text-ember">
+              Our Story &mdash; No. 01
+            </p>
+            <p className="hidden font-condensed text-sm tracking-widest text-bone/40 sm:block">
+              WOODSTOCK, CAPE TOWN
+            </p>
+          </div>
 
-        <div className="story-headline mt-10 overflow-hidden">
-          <h2 className="story-line font-display text-4xl font-medium leading-[0.95] text-balance sm:text-6xl lg:text-7xl">
-            More than tshisa nyama.
-          </h2>
-        </div>
+          <div className="story-headline mt-10 overflow-hidden">
+            <h2 className="story-line font-display text-4xl font-medium leading-[0.95] text-balance sm:text-6xl lg:text-7xl">
+              More than tshisa nyama.
+            </h2>
+          </div>
 
-        <div className="mt-12 grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:gap-16">
-          <div className="story-copy-wrap grid gap-6 text-lg leading-relaxed text-charcoal/80 sm:columns-2 sm:gap-10 sm:text-base [column-fill:balance]">
-            <p className="story-copy break-inside-avoid first-letter:float-left first-letter:mr-2 first-letter:font-display first-letter:text-6xl first-letter:font-semibold first-letter:leading-[0.8] first-letter:text-burnt">
+          <div className="story-copy-wrap mt-12 grid gap-6 text-lg leading-relaxed text-bone/75 sm:columns-2 sm:gap-10 sm:text-base [column-fill:balance]">
+            <p className="story-copy break-inside-avoid first-letter:float-left first-letter:mr-2 first-letter:font-display first-letter:text-6xl first-letter:font-semibold first-letter:leading-[0.8] first-letter:text-ember">
               Um-Lilo started with a fire, a grid, and people who refused to eat in a
               hurry. Everything else grew from that — the menu, the room, the way
               Sunday stretches into evening.
@@ -83,15 +78,16 @@ export default function Story() {
               people, noise, and no one rushing to leave.
             </p>
           </div>
+        </div>
 
-          <div className="story-photo relative aspect-[4/5] w-full overflow-hidden lg:aspect-auto">
-            <ImagePlaceholder
-              brief="The Um-Lilo Private School Tshisa Nyama sign, lit up at night on Albert Road"
-              tag="03"
-              className="h-full w-full"
-              src={site.media.storyPhoto}
-            />
-          </div>
+        {/* Bleeds to the viewport edge — no container padding on this side. */}
+        <div className="story-photo relative min-h-[50vh] w-full overflow-hidden lg:min-h-full">
+          <ImagePlaceholder
+            brief="The Um-Lilo Private School Tshisa Nyama sign, lit up at night on Albert Road"
+            tag="03"
+            className="h-full w-full"
+            src={site.media.storyPhoto}
+          />
         </div>
       </div>
     </section>
