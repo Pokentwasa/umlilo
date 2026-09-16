@@ -5,13 +5,6 @@ import { useGSAP } from "@gsap/react";
 import { gsap, MQ } from "@/lib/gsap";
 import { site } from "@/data/site";
 
-const EMBERS = Array.from({ length: 10 }, (_, i) => ({
-  id: i,
-  left: 8 + ((i * 53) % 84),
-  delay: (i * 0.9) % 7,
-  duration: 5 + (i % 4),
-}));
-
 export default function FinalMoment() {
   const rootRef = useRef<HTMLElement>(null);
 
@@ -34,24 +27,13 @@ export default function FinalMoment() {
 
   return (
     <footer ref={rootRef} className="relative overflow-hidden bg-charcoal pt-28">
-      <div aria-hidden="true" className="pointer-events-none absolute inset-0">
-        {EMBERS.map((e) => (
-          <span
-            key={e.id}
-            className="absolute bottom-0 block h-1 w-1 rounded-full bg-ember/70 ember-glow motion-reduce:hidden"
-            style={{
-              left: `${e.left}%`,
-              animation: `spark-rise ${e.duration}s ease-in ${e.delay}s infinite`,
-            }}
-          />
-        ))}
-        <div
-          className="absolute inset-x-0 bottom-0 h-1/2"
-          style={{
-            background: "radial-gradient(ellipse at bottom, rgba(255,90,43,0.12), transparent 70%)",
-          }}
-        />
-      </div>
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-x-0 bottom-0 h-1/2"
+        style={{
+          background: "radial-gradient(ellipse at bottom, rgba(217,74,37,0.10), transparent 70%)",
+        }}
+      />
 
       <div className="container-edit relative pb-20 text-center">
         <div className="final-headline">

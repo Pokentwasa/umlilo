@@ -3,7 +3,6 @@ import { Fraunces, Archivo, Bebas_Neue } from "next/font/google";
 import { site } from "@/data/site";
 import { restaurantSchema, websiteSchema } from "@/lib/schema";
 import GrainOverlay from "@/components/GrainOverlay";
-import Cursor from "@/components/Cursor";
 import EmberThread from "@/components/EmberThread";
 import "./globals.css";
 
@@ -94,7 +93,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           Skip to content
         </a>
         <GrainOverlay />
-        <Cursor />
         <EmberThread />
         {children}
       </body>

@@ -1,43 +1,12 @@
 "use client";
 
-import { useRef, useState } from "react";
-import { useGSAP } from "@gsap/react";
-import { gsap, MQ } from "@/lib/gsap";
+import { useState } from "react";
 import { site } from "@/data/site";
 
-function MagneticLink({ href, children }: { href: string; children: React.ReactNode }) {
-  const ref = useRef<HTMLAnchorElement>(null);
-
-  useGSAP(() => {
-    const el = ref.current;
-    if (!el) return;
-    const mm = gsap.matchMedia();
-    mm.add(`${MQ.motionOk} and (hover: hover)`, () => {
-      const xTo = gsap.quickTo(el, "x", { duration: 0.3, ease: "power3.out" });
-      const yTo = gsap.quickTo(el, "y", { duration: 0.3, ease: "power3.out" });
-      const onMove = (e: MouseEvent) => {
-        const r = el.getBoundingClientRect();
-        xTo((e.clientX - r.left - r.width / 2) * 0.35);
-        yTo((e.clientY - r.top - r.height / 2) * 0.6);
-      };
-      const onLeave = () => {
-        xTo(0);
-        yTo(0);
-      };
-      el.addEventListener("mousemove", onMove);
-      el.addEventListener("mouseleave", onLeave);
-      return () => {
-        el.removeEventListener("mousemove", onMove);
-        el.removeEventListener("mouseleave", onLeave);
-      };
-    });
-  }, []);
-
+function NavLink({ href, children }: { href: string; children: React.ReactNode }) {
   return (
     <a
-      ref={ref}
       href={href}
-      data-cursor="VIEW"
       className="group relative inline-block text-sm font-semibold uppercase tracking-[0.14em] text-bone/85 transition-colors hover:text-ember"
     >
       {children}
@@ -51,7 +20,7 @@ export default function Nav() {
 
   return (
     <>
-    <header className="fixed inset-x-0 top-0 z-50 border-b border-bone/10 bg-charcoal/70 backdrop-blur-md">
+    <header className="fixed inset-x-0 top-0 z-50 border-b border-bone/10 bg-charcoal">
       <div className="container-edit flex items-center justify-between py-5">
         <a
           href="#top"
@@ -63,17 +32,16 @@ export default function Nav() {
 
         <nav className="hidden items-center gap-8 lg:flex" aria-label="Primary">
           {site.nav.map((item) => (
-            <MagneticLink key={item.href} href={item.href}>
+            <NavLink key={item.href} href={item.href}>
               {item.label}
-            </MagneticLink>
+            </NavLink>
           ))}
         </nav>
 
         <div className="flex items-center gap-4">
           <a
             href={site.order.href}
-            data-cursor="OPEN"
-            className="hidden rounded-full border border-ember/70 px-5 py-2 text-xs font-bold uppercase tracking-[0.14em] text-ember transition-colors hover:bg-ember hover:text-charcoal sm:inline-block"
+            className="hidden border border-ember/70 px-5 py-2 text-xs font-bold uppercase tracking-[0.14em] text-ember transition-colors hover:bg-ember hover:text-charcoal sm:inline-block"
           >
             {site.order.label}
           </a>
@@ -122,7 +90,7 @@ export default function Nav() {
             <a
               href={site.order.href}
               onClick={() => setOpen(false)}
-              className="mt-6 rounded-full border border-ember px-6 py-3 text-sm font-bold uppercase tracking-[0.14em] text-ember"
+              className="mt-6 border border-ember px-6 py-3 text-sm font-bold uppercase tracking-[0.14em] text-ember"
             >
               {site.order.label}
             </a>

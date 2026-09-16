@@ -94,7 +94,10 @@ export default function Imbizo() {
       <div className="container-edit pt-24 lg:absolute lg:left-0 lg:top-10 lg:z-20 lg:pt-0">
         <p className="text-xs font-semibold uppercase tracking-[0.3em] text-ember">Gathering</p>
         <h2 className="mt-3 font-display text-5xl font-medium text-bone sm:text-6xl">Imbizo</h2>
-        <p className="mt-2 text-sm italic text-bone/60">
+        <p className="mt-3 max-w-sm text-balance font-display text-xl italic text-bone/85">
+          Food tastes better together.
+        </p>
+        <p className="mt-2 text-sm text-bone/50">
           {site.motto.isiXhosa} — {site.motto.translation}
         </p>
       </div>

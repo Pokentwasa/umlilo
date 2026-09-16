@@ -1,5 +1,3 @@
-const EQ_HEIGHTS = [40, 70, 30, 90, 55, 80, 35, 65, 45, 75, 25, 60];
-
 function MarqueeRow({
   text,
   reverse = false,
@@ -39,22 +37,6 @@ export default function SoundEnergy() {
         <MarqueeRow text="BRAAI • BASS • BANTER • BALL •" />
         <MarqueeRow text="FIRE • FRIENDS • FOOTBALL • FLAVOUR •" reverse outline />
       </div>
-
-      <div
-        className="mx-auto mt-12 flex h-16 max-w-xs items-end justify-center gap-1.5 px-6"
-        aria-hidden="true"
-      >
-        {EQ_HEIGHTS.map((h, i) => (
-          <span
-            key={i}
-            className="eq-bar w-1.5 rounded-full bg-ember"
-            style={{ height: `${h}%`, animationDelay: `${i * 0.07}s` }}
-          />
-        ))}
-      </div>
-      <p className="mt-4 text-center text-xs font-semibold uppercase tracking-[0.3em] text-bone/40">
-        The energy is always on
-      </p>
     </section>
   );
 }

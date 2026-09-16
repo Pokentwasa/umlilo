@@ -95,7 +95,6 @@ export default function Gallery() {
             <button
               type="button"
               onClick={() => setActive(img)}
-              data-cursor="VIEW"
               className="block h-full w-full text-left"
               aria-label={`Expand: ${img.caption}`}
             >
@@ -115,7 +114,7 @@ export default function Gallery() {
 
       {active && (
         <div
-          className="fixed inset-0 z-[70] flex items-center justify-center bg-charcoal/95 p-6 backdrop-blur-sm"
+          className="fixed inset-0 z-[70] flex items-center justify-center bg-charcoal/95 p-6"
           role="dialog"
           aria-modal="true"
           aria-label={active.caption}

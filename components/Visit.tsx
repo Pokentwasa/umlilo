@@ -36,8 +36,7 @@ export default function Visit() {
             href={directionsUrl()}
             target="_blank"
             rel="noopener noreferrer"
-            data-cursor="OPEN"
-            className="mt-6 inline-flex items-center gap-2 rounded-full border border-charcoal/25 px-6 py-3 text-xs font-bold uppercase tracking-[0.14em] transition-colors hover:border-burnt hover:text-burnt"
+            className="mt-6 inline-flex items-center gap-2 border border-charcoal/25 px-6 py-3 text-xs font-bold uppercase tracking-[0.14em] transition-colors hover:border-burnt hover:text-burnt"
           >
             Get Directions &rarr;
           </a>
@@ -82,7 +81,7 @@ export default function Visit() {
 
           <a
             href={site.order.href}
-            className="mt-10 inline-flex items-center gap-2 rounded-full bg-burnt px-8 py-4 text-sm font-bold uppercase tracking-[0.14em] text-bone transition-colors hover:bg-charcoal"
+            className="mt-10 inline-flex items-center gap-2 bg-burnt px-8 py-4 text-sm font-bold uppercase tracking-[0.14em] text-bone transition-colors hover:bg-charcoal"
           >
             Order Online
           </a>
