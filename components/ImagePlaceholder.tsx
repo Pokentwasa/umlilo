@@ -12,6 +12,11 @@ type ImagePlaceholderProps = {
   src?: string;
   /** Mark true for above-the-fold images (e.g. the Hero background). */
   priority?: boolean;
+  /** Set true when a caller already renders its own caption over this
+   * frame (e.g. FoodSection's dish name/description) — the built-in
+   * bottom label would otherwise collide with it. `brief` still becomes
+   * the accessible label either way. */
+  hideCaption?: boolean;
 };
 
 /**
@@ -28,6 +33,7 @@ export default function ImagePlaceholder({
   decorative = false,
   src,
   priority = false,
+  hideCaption = false,
 }: ImagePlaceholderProps) {
   return (
     <div
@@ -50,10 +56,12 @@ export default function ImagePlaceholder({
           )}
         </>
       ) : (
-        <div className="ph-frame__label">
-          {tag && <span className="tag">{tag}</span>}
-          <span className="truncate">{brief}</span>
-        </div>
+        !hideCaption && (
+          <div className="ph-frame__label">
+            {tag && <span className="tag">{tag}</span>}
+            <span className="truncate">{brief}</span>
+          </div>
+        )
       )}
     </div>
   );

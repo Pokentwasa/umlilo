@@ -16,6 +16,7 @@ function DishPanel({ dish, index }: { dish: Dish; index: number }) {
         tag={String(index + 1).padStart(2, "0")}
         className="absolute inset-0 h-full w-full"
         src={dish.image}
+        hideCaption
       />
       <div
         className="absolute inset-0"
@@ -28,12 +29,15 @@ function DishPanel({ dish, index }: { dish: Dish; index: number }) {
 
       {/* Grill-bar mask: opens as the dish scrolls to centre, closes as
           it moves away — the reveal is tied to the braai grid, not a
-          digital wipe. */}
-      <div aria-hidden="true" className="pointer-events-none absolute inset-0 z-[2] flex flex-col">
-        {Array.from({ length: GRILL_BARS }).map((_, i) => (
-          <span key={i} className="dish-bar block flex-1 bg-charcoal" />
-        ))}
-      </div>
+          digital wipe. Only meaningful over a real photo; skipped on
+          placeholder dishes so it doesn't read as stray dark blocks. */}
+      {dish.image && (
+        <div aria-hidden="true" className="pointer-events-none absolute inset-0 z-[2] flex flex-col">
+          {Array.from({ length: GRILL_BARS }).map((_, i) => (
+            <span key={i} className="dish-bar block flex-1 bg-charcoal" />
+          ))}
+        </div>
+      )}
 
       <div className="absolute inset-x-0 bottom-0 z-[3] p-6 sm:p-10">
         <p className="text-xs font-semibold uppercase tracking-[0.25em] text-ember">

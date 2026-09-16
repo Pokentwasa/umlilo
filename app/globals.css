@@ -91,16 +91,13 @@ body {
   }
 
   /* PLACEHOLDER FRAME — stands in for real photography wherever it's
-     not yet available. Styled like scorched, mottled charcoal rather
-     than a digital skeleton, so the gap reads as material, not UI. */
+     not yet available. A clean, paper-toned card (like a blank frame
+     on a contact sheet) rather than dark-on-dark texture, so it stays
+     legible and reads as an intentional gap, not murky UI noise. */
   .ph-frame {
     position: relative;
     overflow: hidden;
-    background:
-      radial-gradient(ellipse 60% 45% at 20% 25%, rgba(0, 0, 0, 0.35), transparent 70%),
-      radial-gradient(ellipse 50% 40% at 80% 70%, rgba(0, 0, 0, 0.3), transparent 70%),
-      radial-gradient(ellipse 70% 50% at 60% 15%, rgba(217, 74, 37, 0.06), transparent 70%),
-      linear-gradient(160deg, var(--color-smoke), var(--color-ink) 60%, var(--color-charcoal));
+    background: var(--color-bone);
     isolation: isolate;
   }
 
@@ -109,8 +106,8 @@ body {
     position: absolute;
     inset: 0;
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-    opacity: 0.18;
-    mix-blend-mode: overlay;
+    opacity: 0.12;
+    mix-blend-mode: multiply;
   }
 
   .ph-frame__label {
@@ -123,7 +120,7 @@ body {
     font-size: 0.62rem;
     letter-spacing: 0.14em;
     text-transform: uppercase;
-    color: rgba(239, 231, 216, 0.55);
+    color: rgba(20, 16, 12, 0.6);
     display: flex;
     align-items: baseline;
     gap: 0.5rem;
