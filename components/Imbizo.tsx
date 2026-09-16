@@ -7,11 +7,15 @@ import { galleryImages, imbizoPhrases } from "@/data/gallery";
 import { site } from "@/data/site";
 import ImagePlaceholder from "./ImagePlaceholder";
 
+// Every beat below is backed by a real photo already in the repo —
+// picked so each one still lands close to its paired phrase (g3 "The
+// pass" for "PASS THE PLATE.", g9's settled-in customer for "STAY A
+// LITTLE LONGER."), rather than leaving a placeholder mid-sequence.
 const beats = [
   { photo: galleryImages[0], from: { xPercent: -140, yPercent: -10, rotate: -6 }, pos: "left-[6%] top-[18%] w-[30vw] max-w-sm" },
   { photo: galleryImages[4], from: { xPercent: 140, yPercent: 10, rotate: 5 }, pos: "right-[6%] top-[10%] w-[26vw] max-w-sm" },
-  { photo: galleryImages[3], from: { yPercent: -140, rotate: 4 }, pos: "left-[32%] top-[6%] w-[22vw] max-w-xs" },
-  { photo: galleryImages[11], from: { yPercent: 140, rotate: -4 }, pos: "right-[16%] bottom-[8%] w-[28vw] max-w-sm" },
+  { photo: galleryImages[2], from: { yPercent: -140, rotate: 4 }, pos: "left-[32%] top-[6%] w-[22vw] max-w-xs" },
+  { photo: galleryImages[8], from: { yPercent: 140, rotate: -4 }, pos: "right-[16%] bottom-[8%] w-[28vw] max-w-sm" },
   { photo: galleryImages[10], from: { scale: 0.4, opacity: 0 }, pos: "left-[14%] bottom-[10%] w-[20vw] max-w-xs" },
 ] as const;
 
