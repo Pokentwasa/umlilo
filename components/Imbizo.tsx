@@ -90,7 +90,7 @@ export default function Imbizo() {
         beats.forEach((beat, i) => {
           gsap.set(`.imbizo-photo-${i}`, { ...beat.from });
         });
-        gsap.set(".imbizo-final", { opacity: 0, scale: 0.9 });
+        gsap.set(".imbizo-final-caption", { opacity: 0, y: 24, scale: 0.95 });
         gsap.set(".imbizo-mark", { opacity: 0.06 });
 
         const tl = gsap.timeline({
@@ -119,18 +119,17 @@ export default function Imbizo() {
           );
         });
 
-        tl.to(".imbizo-mark", { opacity: 0.16, duration: 0.6 }, "resolve")
+        tl.to(".imbizo-mark", { opacity: 0.22, duration: 0.6 }, "resolve")
           .to(
             ".imbizo-photo",
             { opacity: 0, scale: 0.7, duration: 0.7, ease: "power2.in" },
             "resolve"
           )
           .to(
-            ".imbizo-final",
-            { opacity: 1, scale: 1, duration: 1, ease: "power3.out" },
-            "resolve+=0.2"
-          )
-          .to(".imbizo-final-caption", { opacity: 1, y: 0, duration: 0.6 }, "resolve+=0.6");
+            ".imbizo-final-caption",
+            { opacity: 1, y: 0, scale: 1, duration: 0.8, ease: "power3.out" },
+            "resolve+=0.3"
+          );
       });
 
       // Reduced-motion / smaller screens: static stacked reveal, no pin.
@@ -186,19 +185,10 @@ export default function Imbizo() {
           </div>
         ))}
 
-        <div className="imbizo-final absolute inset-0">
-          <ImagePlaceholder
-            brief="The scattered moments resolved into one: the whole table together, plates passed, mid-laugh"
-            tag="IMBIZO"
-            className="h-full w-full"
-          />
-          <div
-            className="imbizo-final-caption absolute inset-x-0 bottom-16 translate-y-4 text-center opacity-0"
-          >
-            <p className="font-display text-3xl italic text-bone sm:text-4xl">
-              One fire. One table. Everyone.
-            </p>
-          </div>
+        <div className="pointer-events-none absolute inset-0 flex items-center justify-center px-6">
+          <p className="imbizo-final-caption max-w-2xl text-balance text-center font-display text-4xl italic text-bone opacity-0 sm:text-6xl">
+            One fire. One table. Everyone.
+          </p>
         </div>
       </div>
 
@@ -214,15 +204,8 @@ export default function Imbizo() {
             className="imbizo-stack-item w-full max-w-sm"
           />
         ))}
-        <div className="imbizo-stack-item">
-          <div className="aspect-video w-full">
-            <ImagePlaceholder
-              brief="The scattered moments resolved into one: the whole table together, plates passed, mid-laugh"
-              tag="IMBIZO"
-              className="h-full w-full"
-            />
-          </div>
-          <p className="mt-4 font-display text-2xl italic text-bone/90">
+        <div className="imbizo-stack-item py-6 text-center">
+          <p className="font-display text-3xl italic text-bone/90">
             One fire. One table. Everyone.
           </p>
         </div>
