@@ -3,41 +3,77 @@
 import { useRef } from "react";
 import { useGSAP } from "@gsap/react";
 import { gsap, MQ } from "@/lib/gsap";
-import { galleryImages, imbizoPhrases } from "@/data/gallery";
+import { galleryImages } from "@/data/gallery";
 import { site } from "@/data/site";
 import ImagePlaceholder from "./ImagePlaceholder";
 
 // Every beat below is backed by a real photo already in the repo —
-// picked so each one still lands close to its paired phrase (g3 "The
-// pass" for "PASS THE PLATE.", g9's settled-in customer for "STAY A
-// LITTLE LONGER."), rather than leaving a placeholder mid-sequence.
+// picked so each one still lands close to its own caption (g3 "The
+// pass" for "The pass", g9's settled-in customer for "Stay longer"),
+// rather than leaving a placeholder mid-sequence.
 const beats = [
-  { photo: galleryImages[0], from: { xPercent: -140, yPercent: -10, rotate: -6 }, pos: "left-[6%] top-[18%] w-[30vw] max-w-sm", restRotate: -2 },
-  { photo: galleryImages[4], from: { xPercent: 140, yPercent: 10, rotate: 5 }, pos: "right-[6%] top-[10%] w-[26vw] max-w-sm", restRotate: 3 },
-  { photo: galleryImages[2], from: { yPercent: -140, rotate: 4 }, pos: "left-[32%] top-[6%] w-[22vw] max-w-xs", restRotate: -3 },
-  { photo: galleryImages[8], from: { yPercent: 140, rotate: -4 }, pos: "right-[16%] bottom-[8%] w-[28vw] max-w-sm", restRotate: 2.5 },
-  { photo: galleryImages[10], from: { scale: 0.4, opacity: 0 }, pos: "left-[14%] bottom-[10%] w-[20vw] max-w-xs", restRotate: -1.5 },
+  {
+    photo: galleryImages[0],
+    from: { xPercent: -140, yPercent: -10, rotate: -6 },
+    pos: "left-[6%] top-[18%] w-[30vw] max-w-sm",
+    restRotate: -2,
+    caption: "Come hungry",
+  },
+  {
+    photo: galleryImages[4],
+    from: { xPercent: 140, yPercent: 10, rotate: 5 },
+    pos: "right-[6%] top-[10%] w-[26vw] max-w-sm",
+    restRotate: 3,
+    caption: "Your people",
+  },
+  {
+    photo: galleryImages[2],
+    from: { yPercent: -140, rotate: 4 },
+    pos: "left-[32%] top-[6%] w-[22vw] max-w-xs",
+    restRotate: -3,
+    caption: "The pass",
+  },
+  {
+    photo: galleryImages[8],
+    from: { yPercent: 140, rotate: -4 },
+    pos: "right-[16%] bottom-[8%] w-[28vw] max-w-sm",
+    restRotate: 2.5,
+    caption: "Stay longer",
+  },
+  {
+    photo: galleryImages[10],
+    from: { scale: 0.4, opacity: 0 },
+    pos: "left-[14%] bottom-[10%] w-[20vw] max-w-xs",
+    restRotate: -1.5,
+    caption: "Not alone",
+  },
 ] as const;
 
-// A plain white polaroid mount — thicker white border at the bottom,
-// like a real instant photo — so the scattered shots in Imbizo read
-// as printed pictures rather than plain cropped images.
+// A plain white polaroid mount — photo on top, a short caption
+// scrawled in the white border underneath, like someone wrote on the
+// photo with a marker — so the scattered shots in Imbizo read as real
+// keepsakes instead of plain cropped images with text floating over them.
 function Polaroid({
   brief,
   tag,
   src,
+  caption,
   className = "",
 }: {
   brief: string;
   tag: string;
   src?: string;
+  caption: string;
   className?: string;
 }) {
   return (
-    <div className={`bg-bone p-3 pb-10 shadow-2xl shadow-black/50 sm:pb-12 ${className}`}>
+    <div className={`flex flex-col items-center bg-bone p-3 shadow-2xl shadow-black/50 ${className}`}>
       <div className="aspect-[4/5] w-full overflow-hidden">
         <ImagePlaceholder brief={brief} tag={tag} className="h-full w-full" src={src} />
       </div>
+      <p className="mt-3 mb-1 w-full truncate text-center font-marker text-lg leading-none text-charcoal sm:text-xl">
+        {caption}
+      </p>
     </div>
   );
 }
@@ -54,8 +90,6 @@ export default function Imbizo() {
         beats.forEach((beat, i) => {
           gsap.set(`.imbizo-photo-${i}`, { ...beat.from });
         });
-        gsap.set(".imbizo-phrase", { opacity: 0, y: 24 });
-        gsap.set(".imbizo-phrase-0", { opacity: 1, y: 0 });
         gsap.set(".imbizo-final", { opacity: 0, scale: 0.9 });
         gsap.set(".imbizo-mark", { opacity: 0.06 });
 
@@ -70,9 +104,6 @@ export default function Imbizo() {
         });
 
         beats.forEach((beat, i) => {
-          if (i > 0) {
-            tl.to(`.imbizo-phrase-${i - 1}`, { opacity: 0, y: -24, duration: 0.4 }, `beat${i}`);
-          }
           tl.to(
             `.imbizo-photo-${i}`,
             {
@@ -85,15 +116,10 @@ export default function Imbizo() {
               ease: "power3.out",
             },
             `beat${i}`
-          ).to(
-            `.imbizo-phrase-${i}`,
-            { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" },
-            `beat${i}+=0.15`
           );
         });
 
-        tl.to(".imbizo-phrase-4", { opacity: 0, y: -24, duration: 0.4 }, "resolve")
-          .to(".imbizo-mark", { opacity: 0.16, duration: 0.6 }, "resolve")
+        tl.to(".imbizo-mark", { opacity: 0.16, duration: 0.6 }, "resolve")
           .to(
             ".imbizo-photo",
             { opacity: 0, scale: 0.7, duration: 0.7, ease: "power2.in" },
@@ -155,6 +181,7 @@ export default function Imbizo() {
               brief={beat.photo.placeholder}
               tag={beat.photo.category.toUpperCase()}
               src={beat.photo.image}
+              caption={beat.caption}
             />
           </div>
         ))}
@@ -173,39 +200,22 @@ export default function Imbizo() {
             </p>
           </div>
         </div>
-
-        <div className="pointer-events-none absolute inset-0 flex items-center justify-center px-6">
-          {imbizoPhrases.map((phrase, i) => (
-            <p
-              key={phrase}
-              className={`imbizo-phrase imbizo-phrase-${i} absolute text-balance text-center font-display text-4xl font-medium text-bone sm:text-6xl`}
-            >
-              {phrase}
-            </p>
-          ))}
-        </div>
       </div>
 
       {/* Mobile / reduced motion: stacked sequence, fully accessible */}
-      <div className="flex flex-col gap-16 px-6 py-16 lg:hidden">
-        {beats.map((beat, i) => (
-          <div key={beat.photo.id} className="imbizo-stack-item">
-            <p className="font-display text-3xl font-medium text-balance text-bone">
-              {imbizoPhrases[i]}
-            </p>
-            <Polaroid
-              brief={beat.photo.placeholder}
-              tag={beat.photo.category.toUpperCase()}
-              src={beat.photo.image}
-              className="mt-5 w-full max-w-sm"
-            />
-          </div>
+      <div className="flex flex-col gap-12 px-6 py-16 lg:hidden">
+        {beats.map((beat) => (
+          <Polaroid
+            key={beat.photo.id}
+            brief={beat.photo.placeholder}
+            tag={beat.photo.category.toUpperCase()}
+            src={beat.photo.image}
+            caption={beat.caption}
+            className="imbizo-stack-item w-full max-w-sm"
+          />
         ))}
         <div className="imbizo-stack-item">
-          <p className="font-display text-3xl font-medium text-balance text-bone">
-            {imbizoPhrases[4]}
-          </p>
-          <div className="mt-5 aspect-video w-full">
+          <div className="aspect-video w-full">
             <ImagePlaceholder
               brief="The scattered moments resolved into one: the whole table together, plates passed, mid-laugh"
               tag="IMBIZO"

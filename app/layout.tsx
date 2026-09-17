@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Fraunces, Archivo, Bebas_Neue } from "next/font/google";
+import { Fraunces, Archivo, Bebas_Neue, Permanent_Marker } from "next/font/google";
 import { site } from "@/data/site";
 import { restaurantSchema, websiteSchema } from "@/lib/schema";
 import GrainOverlay from "@/components/GrainOverlay";
@@ -23,6 +23,13 @@ const archivo = Archivo({
 
 const bebas = Bebas_Neue({
   variable: "--font-bebas",
+  subsets: ["latin"],
+  weight: ["400"],
+  display: "swap",
+});
+
+const marker = Permanent_Marker({
+  variable: "--font-marker",
   subsets: ["latin"],
   weight: ["400"],
   display: "swap",
@@ -73,7 +80,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html
       lang="en"
-      className={`${fraunces.variable} ${archivo.variable} ${bebas.variable} h-full`}
+      className={`${fraunces.variable} ${archivo.variable} ${bebas.variable} ${marker.variable} h-full`}
     >
       <head>
         <script

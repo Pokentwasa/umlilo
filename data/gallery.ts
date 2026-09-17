@@ -66,11 +66,3 @@ export const galleryImages: GalleryImage[] = [
   },
   { id: "g12", caption: "Stay a little longer", placeholder: "Table late in the afternoon, golden light", category: "environment", orientation: "landscape" },
 ];
-
-export const imbizoPhrases = [
-  "COME HUNGRY.",
-  "BRING YOUR PEOPLE.",
-  "PASS THE PLATE.",
-  "STAY A LITTLE LONGER.",
-  "NO ONE EATS ALONE.",
-] as const;
