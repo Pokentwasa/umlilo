@@ -12,12 +12,35 @@ import ImagePlaceholder from "./ImagePlaceholder";
 // pass" for "PASS THE PLATE.", g9's settled-in customer for "STAY A
 // LITTLE LONGER."), rather than leaving a placeholder mid-sequence.
 const beats = [
-  { photo: galleryImages[0], from: { xPercent: -140, yPercent: -10, rotate: -6 }, pos: "left-[6%] top-[18%] w-[30vw] max-w-sm" },
-  { photo: galleryImages[4], from: { xPercent: 140, yPercent: 10, rotate: 5 }, pos: "right-[6%] top-[10%] w-[26vw] max-w-sm" },
-  { photo: galleryImages[2], from: { yPercent: -140, rotate: 4 }, pos: "left-[32%] top-[6%] w-[22vw] max-w-xs" },
-  { photo: galleryImages[8], from: { yPercent: 140, rotate: -4 }, pos: "right-[16%] bottom-[8%] w-[28vw] max-w-sm" },
-  { photo: galleryImages[10], from: { scale: 0.4, opacity: 0 }, pos: "left-[14%] bottom-[10%] w-[20vw] max-w-xs" },
+  { photo: galleryImages[0], from: { xPercent: -140, yPercent: -10, rotate: -6 }, pos: "left-[6%] top-[18%] w-[30vw] max-w-sm", restRotate: -2 },
+  { photo: galleryImages[4], from: { xPercent: 140, yPercent: 10, rotate: 5 }, pos: "right-[6%] top-[10%] w-[26vw] max-w-sm", restRotate: 3 },
+  { photo: galleryImages[2], from: { yPercent: -140, rotate: 4 }, pos: "left-[32%] top-[6%] w-[22vw] max-w-xs", restRotate: -3 },
+  { photo: galleryImages[8], from: { yPercent: 140, rotate: -4 }, pos: "right-[16%] bottom-[8%] w-[28vw] max-w-sm", restRotate: 2.5 },
+  { photo: galleryImages[10], from: { scale: 0.4, opacity: 0 }, pos: "left-[14%] bottom-[10%] w-[20vw] max-w-xs", restRotate: -1.5 },
 ] as const;
+
+// A plain white polaroid mount — thicker white border at the bottom,
+// like a real instant photo — so the scattered shots in Imbizo read
+// as printed pictures rather than plain cropped images.
+function Polaroid({
+  brief,
+  tag,
+  src,
+  className = "",
+}: {
+  brief: string;
+  tag: string;
+  src?: string;
+  className?: string;
+}) {
+  return (
+    <div className={`bg-bone p-3 pb-10 shadow-2xl shadow-black/50 sm:pb-12 ${className}`}>
+      <div className="aspect-[4/5] w-full overflow-hidden">
+        <ImagePlaceholder brief={brief} tag={tag} className="h-full w-full" src={src} />
+      </div>
+    </div>
+  );
+}
 
 export default function Imbizo() {
   const rootRef = useRef<HTMLElement>(null);
@@ -46,13 +69,21 @@ export default function Imbizo() {
           },
         });
 
-        beats.forEach((_, i) => {
+        beats.forEach((beat, i) => {
           if (i > 0) {
             tl.to(`.imbizo-phrase-${i - 1}`, { opacity: 0, y: -24, duration: 0.4 }, `beat${i}`);
           }
           tl.to(
             `.imbizo-photo-${i}`,
-            { xPercent: 0, yPercent: 0, rotate: 0, scale: 1, opacity: 1, duration: 0.9, ease: "power3.out" },
+            {
+              xPercent: 0,
+              yPercent: 0,
+              rotate: beat.restRotate,
+              scale: 1,
+              opacity: 1,
+              duration: 0.9,
+              ease: "power3.out",
+            },
             `beat${i}`
           ).to(
             `.imbizo-phrase-${i}`,
@@ -118,12 +149,11 @@ export default function Imbizo() {
         {beats.map((beat, i) => (
           <div
             key={beat.photo.id}
-            className={`imbizo-photo imbizo-photo-${i} absolute aspect-[4/5] ${beat.pos}`}
+            className={`imbizo-photo imbizo-photo-${i} absolute ${beat.pos}`}
           >
-            <ImagePlaceholder
+            <Polaroid
               brief={beat.photo.placeholder}
               tag={beat.photo.category.toUpperCase()}
-              className="h-full w-full shadow-2xl shadow-black/50"
               src={beat.photo.image}
             />
           </div>
@@ -163,9 +193,12 @@ export default function Imbizo() {
             <p className="font-display text-3xl font-medium text-balance text-bone">
               {imbizoPhrases[i]}
             </p>
-            <div className="mt-5 aspect-[4/5] w-full max-w-sm">
-              <ImagePlaceholder brief={beat.photo.placeholder} tag={beat.photo.category.toUpperCase()} className="h-full w-full" src={beat.photo.image} />
-            </div>
+            <Polaroid
+              brief={beat.photo.placeholder}
+              tag={beat.photo.category.toUpperCase()}
+              src={beat.photo.image}
+              className="mt-5 w-full max-w-sm"
+            />
           </div>
         ))}
         <div className="imbizo-stack-item">

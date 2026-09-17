@@ -27,7 +27,7 @@ export default function Hero() {
         })
           .from(
             ".hero-logo",
-            { opacity: 0, scale: 0.92, duration: 1, ease: "power3.out" },
+            { opacity: 0, scale: 0.92, duration: 1.7, ease: "power2.out" },
             "-=0.6"
           )
           .from(".hero-sub", { opacity: 0, y: 16, duration: 0.8, ease: "power2.out" }, "-=0.5")
@@ -81,7 +81,7 @@ export default function Hero() {
       </div>
 
       <div className="container-edit relative z-10 flex flex-col items-center text-center">
-        <h1 className="hero-logo w-full max-w-[280px] sm:max-w-sm">
+        <h1 className="hero-logo w-full max-w-[340px] sm:max-w-md lg:max-w-xl">
           <Image
             src={site.media.logo}
             alt="Um-Lilo — Indawo yeMbizo"
@@ -93,7 +93,7 @@ export default function Hero() {
         </h1>
 
         <p className="hero-sub mt-2 max-w-md text-sm font-semibold uppercase tracking-[0.2em] text-bone/70">
-          Tshisa Nyama. Food. People. Imbizo.
+          Private School Tshisa Nyama
         </p>
       </div>
 
