@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef } from "react";
+import Image from "next/image";
 import { useGSAP } from "@gsap/react";
 import { gsap, MQ } from "@/lib/gsap";
 import ImagePlaceholder from "./ImagePlaceholder";
@@ -25,21 +26,11 @@ export default function Hero() {
           ease: "power3.inOut",
         })
           .from(
-            ".hero-eyebrow",
-            { yPercent: 120, opacity: 0, duration: 0.7, ease: "power3.out" },
+            ".hero-logo",
+            { opacity: 0, scale: 0.92, duration: 1, ease: "power3.out" },
             "-=0.6"
           )
-          .from(
-            ".hero-line",
-            {
-              yPercent: 110,
-              duration: 1,
-              ease: "power4.out",
-              stagger: 0.12,
-            },
-            "-=0.4"
-          )
-          .from(".hero-sub", { opacity: 0, y: 16, duration: 0.8, ease: "power2.out" }, "-=0.4")
+          .from(".hero-sub", { opacity: 0, y: 16, duration: 0.8, ease: "power2.out" }, "-=0.5")
           .from(".hero-scroll", { opacity: 0, duration: 0.8 }, "-=0.3");
         return () => tl.kill();
       });
@@ -47,10 +38,10 @@ export default function Hero() {
       // Reduced-motion fallback: everything simply present, no animation.
       mm.add(`not all and (${MQ.motionOk})`, () => {
         gsap.set(".hero-bar", { xPercent: (i) => (i % 2 === 0 ? -100 : 100) });
-        gsap.set([".hero-eyebrow", ".hero-line", ".hero-sub", ".hero-scroll"], {
+        gsap.set([".hero-logo", ".hero-sub", ".hero-scroll"], {
           opacity: 1,
           y: 0,
-          yPercent: 0,
+          scale: 1,
         });
       });
     },
@@ -61,7 +52,7 @@ export default function Hero() {
     <section
       ref={root}
       id="top"
-      className="relative flex h-[100svh] min-h-[640px] w-full items-end overflow-hidden bg-charcoal"
+      className="relative flex h-[100svh] min-h-[640px] w-full items-center justify-center overflow-hidden bg-charcoal"
       aria-label="Um-Lilo — introduction"
     >
       <ImagePlaceholder
@@ -76,7 +67,7 @@ export default function Hero() {
         className="absolute inset-0"
         style={{
           background:
-            "linear-gradient(180deg, rgba(20,16,12,0.3) 0%, rgba(20,16,12,0.5) 45%, rgba(20,16,12,0.94) 100%)",
+            "linear-gradient(180deg, rgba(20,16,12,0.4) 0%, rgba(20,16,12,0.55) 55%, rgba(20,16,12,0.85) 100%)",
         }}
         aria-hidden="true"
       />
@@ -89,23 +80,19 @@ export default function Hero() {
         ))}
       </div>
 
-      <div className="container-edit relative z-10 w-full pb-16 sm:pb-20">
-        <div className="hero-eyebrow overflow-hidden">
-          <p className="text-xs font-semibold uppercase tracking-[0.3em] text-ember">
-            Um-Lilo Private School
-          </p>
-        </div>
-
-        <h1 className="mt-4 font-display text-[15vw] font-medium leading-[0.85] tracking-tight text-bone sm:text-[12vw] lg:text-[8.5rem]">
-          <span className="block overflow-hidden">
-            <span className="hero-line block">Around</span>
-          </span>
-          <span className="block overflow-hidden">
-            <span className="hero-line block">The Fire</span>
-          </span>
+      <div className="container-edit relative z-10 flex flex-col items-center text-center">
+        <h1 className="hero-logo w-full max-w-[280px] sm:max-w-sm">
+          <Image
+            src={site.media.logo}
+            alt="Um-Lilo — Indawo yeMbizo"
+            width={1254}
+            height={1254}
+            priority
+            className="h-auto w-full"
+          />
         </h1>
 
-        <p className="hero-sub mt-6 max-w-md text-sm font-semibold uppercase tracking-[0.2em] text-bone/70 sm:mt-8">
+        <p className="hero-sub mt-2 max-w-md text-sm font-semibold uppercase tracking-[0.2em] text-bone/70">
           Tshisa Nyama. Food. People. Imbizo.
         </p>
       </div>

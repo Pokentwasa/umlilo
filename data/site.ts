@@ -65,6 +65,7 @@ export const site = {
     hero: "/images/pexels-pamanjoe-13672086.jpg",
     storyPhoto: "/images/Screenshot%202026-09-15%20at%2022.39.59.png",
     storefront: "/images/Screenshot%202026-09-15%20at%2022.38.41.png",
+    logo: "/images/umlilo-logo.png",
   },
   hours,
   nav: [
