@@ -182,32 +182,8 @@ body {
     padding-inline: clamp(1.25rem, 4vw, 4rem);
   }
 
-  .animate-marquee {
-    animation: marquee-x 28s linear infinite;
-  }
-
-  .animate-marquee-reverse {
-    animation: marquee-x 34s linear infinite reverse;
-  }
-
   .text-stroke {
     -webkit-text-stroke: 1.5px var(--color-bone);
     color: transparent;
-  }
-}
-
-@keyframes marquee-x {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(-50%);
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .animate-marquee,
-  .animate-marquee-reverse {
-    animation: none;
   }
 }

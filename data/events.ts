@@ -17,16 +17,6 @@ export const upcomingMatches: MatchEvent[] = [
   { id: "m4", competition: "Rugby Championship", fixture: "Springboks vs All Blacks", date: "2026-09-26", time: "17:10", note: "Book your table" },
 ];
 
-export const tickerItems = [
-  "FOOD",
-  "FOOTBALL",
-  "FRIENDS",
-  "FIRE",
-  "RUGBY",
-  "SUNDAY PLATES",
-  "GOOD COMPANY",
-] as const;
-
 export const announcements = [
   {
     id: "a1",
