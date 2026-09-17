@@ -48,13 +48,13 @@
 }
 
 html {
-  background: var(--color-bone);
+  background: var(--color-charcoal);
   scroll-behavior: auto;
 }
 
 body {
-  background: var(--color-bone);
-  color: var(--color-charcoal);
+  background: var(--color-charcoal);
+  color: var(--color-bone);
   font-family: var(--font-sans);
   overflow-x: clip;
   cursor: default;
@@ -62,7 +62,7 @@ body {
 
 ::selection {
   background: var(--color-ember);
-  color: var(--color-bone);
+  color: var(--color-charcoal);
 }
 
 /* Focus states — always visible, never suppressed */
@@ -98,7 +98,6 @@ body {
     position: relative;
     overflow: hidden;
     background: var(--color-bone);
-    border: 1px solid rgba(20, 16, 12, 0.15);
     isolation: isolate;
   }
 

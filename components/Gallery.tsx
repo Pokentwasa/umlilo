@@ -70,10 +70,10 @@ export default function Gallery() {
   }, [active]);
 
   return (
-    <section ref={rootRef} className="relative bg-bone py-24 sm:py-32" aria-label="Gallery">
+    <section ref={rootRef} className="relative bg-ink py-24 sm:py-32" aria-label="Gallery">
       <div className="container-edit">
-        <p className="text-xs font-semibold uppercase tracking-[0.3em] text-burnt">Gallery</p>
-        <h2 className="mt-3 max-w-xl text-balance font-display text-4xl font-medium text-charcoal sm:text-5xl">
+        <p className="text-xs font-semibold uppercase tracking-[0.3em] text-ember">Gallery</p>
+        <h2 className="mt-3 max-w-xl text-balance font-display text-4xl font-medium text-bone sm:text-5xl">
           People. Plates. Place.
         </h2>
       </div>
@@ -105,7 +105,7 @@ export default function Gallery() {
                 src={img.image}
               />
             </button>
-            <figcaption className="mt-2 text-xs uppercase tracking-[0.15em] text-charcoal/50">
+            <figcaption className="mt-2 text-xs uppercase tracking-[0.15em] text-bone/50">
               {img.caption}
             </figcaption>
           </figure>
@@ -137,7 +137,7 @@ export default function Gallery() {
         </div>
       )}
 
-      <style>{`.hide-scrollbar::-webkit-scrollbar { height: 6px; } .hide-scrollbar::-webkit-scrollbar-thumb { background: rgba(20,16,12,0.2); border-radius: 999px; }`}</style>
+      <style>{`.hide-scrollbar::-webkit-scrollbar { height: 6px; } .hide-scrollbar::-webkit-scrollbar-thumb { background: rgba(239,231,216,0.2); border-radius: 999px; }`}</style>
     </section>
   );
 }

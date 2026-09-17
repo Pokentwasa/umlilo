@@ -58,8 +58,7 @@ export default function EmberThread() {
         <path
           d="M20 0 C 32 80, 8 160, 20 240 C 32 320, 8 400, 20 480 C 32 560, 8 640, 20 720 C 32 800, 8 880, 20 960 L 20 1000"
           fill="none"
-          stroke="var(--color-steel)"
-          strokeOpacity="0.35"
+          stroke="rgba(239,231,216,0.12)"
           strokeWidth="1.5"
         />
         <path

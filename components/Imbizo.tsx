@@ -94,14 +94,14 @@ export default function Imbizo() {
   );
 
   return (
-    <section ref={rootRef} id="imbizo" className="relative bg-bone" aria-label="Imbizo — gathering">
+    <section ref={rootRef} id="imbizo" className="relative bg-charcoal" aria-label="Imbizo — gathering">
       <div className="container-edit pt-24 lg:absolute lg:left-0 lg:top-10 lg:z-20 lg:pt-0">
-        <p className="text-xs font-semibold uppercase tracking-[0.3em] text-burnt">Gathering</p>
-        <h2 className="mt-3 font-display text-5xl font-medium text-charcoal sm:text-6xl">Imbizo</h2>
-        <p className="mt-3 max-w-sm text-balance font-display text-xl italic text-charcoal/85">
+        <p className="text-xs font-semibold uppercase tracking-[0.3em] text-ember">Gathering</p>
+        <h2 className="mt-3 font-display text-5xl font-medium text-bone sm:text-6xl">Imbizo</h2>
+        <p className="mt-3 max-w-sm text-balance font-display text-xl italic text-bone/85">
           Food tastes better together.
         </p>
-        <p className="mt-2 text-sm text-charcoal/50">
+        <p className="mt-2 text-sm text-bone/50">
           {site.motto.isiXhosa} — {site.motto.translation}
         </p>
       </div>
@@ -110,7 +110,7 @@ export default function Imbizo() {
       <div ref={pinRef} className="relative hidden h-screen overflow-hidden lg:block">
         <span
           aria-hidden="true"
-          className="imbizo-mark pointer-events-none absolute inset-0 flex items-center justify-center font-display text-[26vw] font-bold text-charcoal select-none"
+          className="imbizo-mark pointer-events-none absolute inset-0 flex items-center justify-center font-display text-[26vw] font-bold text-bone select-none"
         >
           IMBIZO
         </span>
@@ -138,7 +138,7 @@ export default function Imbizo() {
           <div
             className="imbizo-final-caption absolute inset-x-0 bottom-16 translate-y-4 text-center opacity-0"
           >
-            <p className="font-display text-3xl italic text-charcoal sm:text-4xl">
+            <p className="font-display text-3xl italic text-bone sm:text-4xl">
               One fire. One table. Everyone.
             </p>
           </div>
@@ -148,7 +148,7 @@ export default function Imbizo() {
           {imbizoPhrases.map((phrase, i) => (
             <p
               key={phrase}
-              className={`imbizo-phrase imbizo-phrase-${i} absolute text-balance text-center font-display text-4xl font-medium text-burnt sm:text-6xl`}
+              className={`imbizo-phrase imbizo-phrase-${i} absolute text-balance text-center font-display text-4xl font-medium text-bone sm:text-6xl`}
             >
               {phrase}
             </p>
@@ -160,7 +160,7 @@ export default function Imbizo() {
       <div className="flex flex-col gap-16 px-6 py-16 lg:hidden">
         {beats.map((beat, i) => (
           <div key={beat.photo.id} className="imbizo-stack-item">
-            <p className="font-display text-3xl font-medium text-balance text-burnt">
+            <p className="font-display text-3xl font-medium text-balance text-bone">
               {imbizoPhrases[i]}
             </p>
             <div className="mt-5 aspect-[4/5] w-full max-w-sm">
@@ -169,7 +169,7 @@ export default function Imbizo() {
           </div>
         ))}
         <div className="imbizo-stack-item">
-          <p className="font-display text-3xl font-medium text-balance text-burnt">
+          <p className="font-display text-3xl font-medium text-balance text-bone">
             {imbizoPhrases[4]}
           </p>
           <div className="mt-5 aspect-video w-full">
@@ -179,7 +179,7 @@ export default function Imbizo() {
               className="h-full w-full"
             />
           </div>
-          <p className="mt-4 font-display text-2xl italic text-charcoal/90">
+          <p className="mt-4 font-display text-2xl italic text-bone/90">
             One fire. One table. Everyone.
           </p>
         </div>
