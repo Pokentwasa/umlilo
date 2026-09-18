@@ -31,6 +31,7 @@ export const dishes: Dish[] = [
       "Slow-grilled sheep head, split and shared. Old-school, honest, and not for the shy.",
     price: null,
     placeholder: "Smiley served whole on an enamel tray, hands reaching in",
+    image: "/images/Sheep%20Head.jpg",
   },
   {
     slug: "mutton-tripe",
@@ -60,6 +61,7 @@ export const dishes: Dish[] = [
       "Whole chicken, marinated hard and grilled harder — the crowd favourite on any given Sunday.",
     price: null,
     placeholder: "Whole hardbody chicken over open flame, grill marks visible",
+    image: "/images/Mleqwa.jpg",
   },
   {
     slug: "wings",
@@ -68,6 +70,7 @@ export const dishes: Dish[] = [
     description: "Six pieces, charred and sticky — gone before the second round of drinks arrives.",
     price: 180,
     placeholder: "Tray of grilled wings, hand reaching for one",
+    image: "/images/12277aaa0a935f6b19db311a43f3a143.jpg",
   },
   {
     slug: "beef-stew",
@@ -115,6 +118,7 @@ export const sharingPlatters: Dish[] = [
       "A table of its own — a mix off the fire built for a full house and no plan to leave early.",
     price: null,
     placeholder: "Overhead shot of a full sharing platter surrounded by hands",
+    image: "/images/braai%20platter.jpg",
   },
 ];
 
