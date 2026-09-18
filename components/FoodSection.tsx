@@ -6,8 +6,6 @@ import { gsap, ScrollTrigger, MQ } from "@/lib/gsap";
 import { dishes, sharingPlatters, type Dish } from "@/data/menu";
 import ImagePlaceholder from "./ImagePlaceholder";
 
-const GRILL_BARS = 6;
-
 function DishPanel({ dish, index }: { dish: Dish; index: number }) {
   return (
     <article className="dish-panel relative h-[64vh] w-[86vw] shrink-0 snap-center overflow-hidden lg:h-[78vh] lg:w-[58vw] xl:w-[50vw]">
@@ -26,18 +24,6 @@ function DishPanel({ dish, index }: { dish: Dish; index: number }) {
         }}
         aria-hidden="true"
       />
-
-      {/* Grill-bar mask: opens as the dish scrolls to centre, closes as
-          it moves away — the reveal is tied to the braai grid, not a
-          digital wipe. Only meaningful over a real photo; skipped on
-          placeholder dishes so it doesn't read as stray dark blocks. */}
-      {dish.image && (
-        <div aria-hidden="true" className="pointer-events-none absolute inset-0 z-[2] flex flex-col">
-          {Array.from({ length: GRILL_BARS }).map((_, i) => (
-            <span key={i} className="dish-bar block flex-1 bg-bone" />
-          ))}
-        </div>
-      )}
 
       <div className="absolute inset-x-0 bottom-0 z-[3] p-6 sm:p-10">
         <p className="text-xs font-semibold uppercase tracking-[0.25em] text-ember">
@@ -75,7 +61,6 @@ export default function FoodSection() {
         if (distance <= 0) return;
 
         const panels = gsap.utils.toArray<HTMLElement>(".dish-panel");
-        gsap.set(".dish-bar", { xPercent: (i) => (i % 2 === 0 ? -100 : 100) });
 
         const syncPanels = (progress: number) => {
           gsap.set(track, { x: -distance * progress });
@@ -88,13 +73,6 @@ export default function FoodSection() {
             gsap.set(panel, {
               scale: gsap.utils.interpolate(1, 0.9, t),
               opacity: gsap.utils.interpolate(1, 0.55, t),
-            });
-            // Cubic-eased so the grill bars commit fully open across most
-            // of the "centred" range, rather than needing t===0 exactly —
-            // scrubbed scroll (no snap) can rest anywhere near centre.
-            const barT = t * t * t;
-            gsap.set(panel.querySelectorAll(".dish-bar"), {
-              xPercent: (i: number) => gsap.utils.interpolate(i % 2 === 0 ? -100 : 100, 0, barT),
             });
           });
         };
@@ -112,11 +90,6 @@ export default function FoodSection() {
         syncPanels(st.progress);
 
         return () => st.kill();
-      });
-
-      // Reduced motion / mobile: bars stay fully open, images always visible.
-      mm.add(`not all and (${MQ.desktop} and ${MQ.motionOk})`, () => {
-        gsap.set(".dish-bar", { xPercent: (i) => (i % 2 === 0 ? -100 : 100) });
       });
     },
     { scope: rootRef, dependencies: [allDishes.length] }
