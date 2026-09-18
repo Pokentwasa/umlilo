@@ -50,7 +50,7 @@ export const dishes: Dish[] = [
       "Beef brisket, fire-kissed and rested, sliced thick at the pass.",
     price: null,
     placeholder: "Steak fire-kissed on the grid, tongs lifting a piece, smoke rising",
-    image: "/images/pexels-christina99999-36931026.jpg",
+    image: "/images/Geme.jpg",
   },
   {
     slug: "hardbody-chicken",
@@ -76,6 +76,7 @@ export const dishes: Dish[] = [
     description: "A Sunday-table stew, rich and unhurried, built for pap.",
     price: null,
     placeholder: "Beef stew in a three-legged pot, wooden spoon resting",
+    image: "/images/rimsha-noor-RVWHhDVjBNI-unsplash.jpg",
   },
   {
     slug: "pap",
