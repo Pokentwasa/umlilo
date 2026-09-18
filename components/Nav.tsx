@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import { site } from "@/data/site";
 
 function NavLink({ href, children }: { href: string; children: React.ReactNode }) {
@@ -22,12 +23,14 @@ export default function Nav() {
     <>
     <header className="fixed inset-x-0 top-0 z-50 border-b border-bone/10 bg-charcoal">
       <div className="container-edit flex items-center justify-between py-5">
-        <a
-          href="#top"
-          className="font-display text-lg font-semibold tracking-tight text-bone"
-          aria-label={`${site.shortName} — home`}
-        >
-          UM-LILO
+        <a href="#top" className="block h-9 w-9 shrink-0" aria-label={`${site.shortName} — home`}>
+          <Image
+            src={site.media.logo}
+            alt={site.shortName}
+            width={1254}
+            height={1254}
+            className="h-full w-full object-contain"
+          />
         </a>
 
         <nav className="hidden items-center gap-8 lg:flex" aria-label="Primary">
@@ -62,7 +65,15 @@ export default function Nav() {
       {open && (
         <div className="fixed inset-0 z-[60] flex flex-col bg-charcoal">
           <div className="container-edit flex items-center justify-between py-5">
-            <span className="font-display text-lg font-semibold text-bone">UM-LILO</span>
+            <span className="block h-9 w-9" aria-hidden="true">
+              <Image
+                src={site.media.logo}
+                alt=""
+                width={1254}
+                height={1254}
+                className="h-full w-full object-contain"
+              />
+            </span>
             <button
               type="button"
               onClick={() => setOpen(false)}

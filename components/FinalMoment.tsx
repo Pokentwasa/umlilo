@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef } from "react";
+import Image from "next/image";
 import { useGSAP } from "@gsap/react";
 import { gsap, MQ } from "@/lib/gsap";
 import { site } from "@/data/site";
@@ -47,7 +48,15 @@ export default function FinalMoment() {
         </div>
 
         <div className="final-line mx-auto mt-16 flex max-w-3xl flex-col items-center gap-10 border-t border-bone/10 pt-10 sm:flex-row sm:justify-between sm:text-left">
-          <span className="font-display text-2xl font-semibold text-bone">UM-LILO</span>
+          <a href="#top" className="block h-10 w-10 shrink-0" aria-label={`${site.shortName} — home`}>
+            <Image
+              src={site.media.logo}
+              alt={site.shortName}
+              width={1254}
+              height={1254}
+              className="h-full w-full object-contain"
+            />
+          </a>
 
           <nav className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2" aria-label="Footer">
             {site.nav.map((item) => (
