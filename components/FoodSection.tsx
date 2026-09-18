@@ -34,7 +34,7 @@ function DishPanel({ dish, index }: { dish: Dish; index: number }) {
       {dish.image && (
         <div aria-hidden="true" className="pointer-events-none absolute inset-0 z-[2] flex flex-col">
           {Array.from({ length: GRILL_BARS }).map((_, i) => (
-            <span key={i} className="dish-bar block flex-1 bg-charcoal" />
+            <span key={i} className="dish-bar block flex-1 bg-bone" />
           ))}
         </div>
       )}

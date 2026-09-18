@@ -40,14 +40,14 @@ export default function Story() {
   );
 
   return (
-    <section ref={rootRef} id="story" className="relative bg-charcoal text-bone" aria-label="Our story">
+    <section ref={rootRef} id="story" className="relative bg-bone text-charcoal" aria-label="Our story">
       <div className="grid lg:grid-cols-[1.3fr_1fr] lg:items-stretch">
         <div className="py-24 pl-[clamp(1.25rem,4vw,4rem)] pr-[clamp(1.25rem,4vw,4rem)] sm:py-32 lg:pr-16">
-          <div className="flex items-start justify-between border-b border-bone/15 pb-4">
+          <div className="flex items-start justify-between border-b border-charcoal/15 pb-4">
             <p className="text-xs font-semibold uppercase tracking-[0.3em] text-ember">
               Our Story &mdash; No. 01
             </p>
-            <p className="hidden font-condensed text-sm tracking-widest text-bone/40 sm:block">
+            <p className="hidden font-condensed text-sm tracking-widest text-charcoal/40 sm:block">
               WOODSTOCK, CAPE TOWN
             </p>
           </div>
@@ -58,7 +58,7 @@ export default function Story() {
             </h2>
           </div>
 
-          <div className="story-copy-wrap mt-12 grid gap-6 text-lg leading-relaxed text-bone/75 sm:columns-2 sm:gap-10 sm:text-base [column-fill:balance]">
+          <div className="story-copy-wrap mt-12 grid gap-6 text-lg leading-relaxed text-charcoal/75 sm:columns-2 sm:gap-10 sm:text-base [column-fill:balance]">
             <p className="story-copy break-inside-avoid first-letter:float-left first-letter:mr-2 first-letter:font-display first-letter:text-6xl first-letter:font-semibold first-letter:leading-[0.8] first-letter:text-ember">
               Um-Lilo started with a fire, a grid, and people who refused to eat in a
               hurry. Everything else grew from that — the menu, the room, the way
