@@ -2,11 +2,9 @@
 
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { Draggable } from "gsap/Draggable";
-import { InertiaPlugin } from "gsap/InertiaPlugin";
 
 if (typeof window !== "undefined") {
-  gsap.registerPlugin(ScrollTrigger, Draggable, InertiaPlugin);
+  gsap.registerPlugin(ScrollTrigger);
 }
 
 /** Media-query key used consistently with gsap.matchMedia() across
@@ -18,4 +16,4 @@ export const MQ = {
   desktop: "(min-width: 1024px)",
 } as const;
 
-export { gsap, ScrollTrigger, Draggable };
+export { gsap, ScrollTrigger };

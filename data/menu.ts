@@ -82,14 +82,6 @@ export const dishes: Dish[] = [
     image: "/images/rimsha-noor-RVWHhDVjBNI-unsplash.jpg",
   },
   {
-    slug: "pap",
-    name: "Pap",
-    category: "Sides",
-    description: "Stiff, steaming, stirred the traditional way.",
-    price: null,
-    placeholder: "Mound of pap being served, steam catching the light",
-  },
-  {
     slug: "steamed-bread",
     name: "Steamed Bread",
     category: "Sides",
