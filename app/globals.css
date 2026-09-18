@@ -6,8 +6,8 @@
    Sunday lunch. Colour is used sparingly and intentionally.
    ============================================================ */
 :root {
-  --color-charcoal: #14100c;   /* soot black */
-  --color-ink: #1c1712;        /* secondary dark surface */
+  --color-charcoal: #0a0a0a;   /* true black */
+  --color-ink: #121212;        /* secondary dark surface */
   --color-bone: #ece3d3;       /* warm cream */
   --color-cream: #f3ead9;      /* lighter warm cream */
   --color-ember: #d94a25;      /* ember red — hot metal, not neon. accent only */
@@ -122,7 +122,7 @@ body {
     font-size: 0.62rem;
     letter-spacing: 0.14em;
     text-transform: uppercase;
-    color: rgba(20, 16, 12, 0.6);
+    color: rgba(10, 10, 10, 0.6);
     display: flex;
     align-items: baseline;
     gap: 0.5rem;
@@ -141,7 +141,7 @@ body {
     top: 0.85rem;
     z-index: 2;
     border-radius: 0.125rem;
-    background: rgba(21, 17, 13, 0.6);
+    background: rgba(10, 10, 10, 0.6);
     padding: 0.15rem 0.5rem;
     font-family: var(--font-sans);
     font-size: 0.6rem;

@@ -22,7 +22,7 @@ function DishPanel({ dish, index }: { dish: Dish; index: number }) {
         className="absolute inset-0"
         style={{
           background:
-            "linear-gradient(0deg, rgba(20,16,12,0.92) 0%, rgba(20,16,12,0.15) 55%, transparent 75%)",
+            "linear-gradient(0deg, rgba(10,10,10,0.92) 0%, rgba(10,10,10,0.15) 55%, transparent 75%)",
         }}
         aria-hidden="true"
       />
